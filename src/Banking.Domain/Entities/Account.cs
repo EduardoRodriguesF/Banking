@@ -4,16 +4,16 @@
     {
         public readonly Guid AccountNumber = accountNumber;
         public readonly Guid CustomerId = owner;
-        public decimal Balance { get; private set; } = initialBalance;
+        public Money Balance { get; private set; } = Money.Create(initialBalance, "BRL");
 
-        public void Deposit(decimal amount)
+        public void Deposit(Money funds)
         {
-            Balance += amount;
+            Balance = Balance.Add(funds);
         }
 
-        public void Withdraw(decimal amount)
+        public void Withdraw(Money funds)
         {
-            Balance -= amount;
+            Balance = Balance.Subtract(funds);
         }
     }
 }

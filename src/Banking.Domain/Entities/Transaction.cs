@@ -14,6 +14,12 @@
         Money Amount,
         TransactionType Type,
         DateTime Date,
-        string Description
-    );
+        string? Description
+    )
+    {
+        public Transaction(Guid accountId, Money amount, TransactionType type, string? description = null)
+            : this(Guid.Empty, accountId, amount, type, DateTime.UtcNow, description)
+        {
+        }
+    };
 }

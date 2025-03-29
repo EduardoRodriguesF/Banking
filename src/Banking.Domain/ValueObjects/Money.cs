@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace Banking.Domain
 {
@@ -51,6 +52,16 @@ namespace Banking.Domain
         public override string ToString()
         {
             return $"{Amount} {Currency}";
+        }
+
+        public static bool operator >(Money left, Money right)
+        {
+            return left.Amount > right.Amount;
+        }
+
+        public static bool operator <(Money left, Money right)
+        {
+            return left.Amount < right.Amount;
         }
     }
 }
